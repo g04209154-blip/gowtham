@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gowtham B | Cyber Security Student</title>
+<style>
+  :root {
+    --bg: #050806;
+    --panel: rgba(8, 18, 12, 0.88);
+    --line: #12361f;
+    --green: #39ff7a;
+    --dim: #6fae85;
+    --amber: #ffb454;
+    --text: #cfeedd;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "JetBrains Mono", "Fira Code", Consolas, "Courier New", monospace;
+    line-height: 1.7; font-size: 16px;
+  }
+  #rain { position: fixed; inset: 0; z-index: 0; opacity: .35; }
+  .scan {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,.18) 0 1px, transparent 1px 3px);
+  }
+  main { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 24px 20px 80px; }
+  a { color: var(--green); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  nav { display: flex; gap: 20px; flex-wrap: wrap; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  nav a { text-decoration: none; color: var(--dim); }
+  nav a:hover { color: var(--green); }
+
+  .term {
+    margin-top: 40px; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 6px; box-shadow: 0 0 40px rgba(57,255,122,.08);
+  }
+  .term-bar { display: flex; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); align-items: center; color: var(--dim); font-size: 13px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+  .term-body { padding: 22px 20px 26px; min-height: 270px; }
+  .prompt { color: var(--green); }
+  .out { color: var(--text); margin: 2px 0 14px; }
+  h1 { font-size: clamp(30px, 6vw, 52px); line-height: 1.1; margin: 10px 0 8px; color: var(--green); text-shadow: 0 0 14px rgba(57,255,122,.5); }
+  .cursor { display: inline-block; width: 10px; height: 1.1em; background: var(--green); vertical-align: text-bottom; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  section { margin-top: 70px; }
+  h2 { font-size: 22px; color: var(--green); margin: 0 0 18px; font-weight: 600; }
+  h2::before { content: "$ "; color: var(--amber); }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 18px; }
+  .card h3 { margin: 0 0 6px; font-size: 16px; color: var(--amber); }
+  .card p { margin: 0; font-size: 14px; color: var(--text); }
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag { border: 1px solid var(--line); padding: 4px 12px; border-radius: 4px; background: var(--panel); font-size: 14px; }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--green); }
+  .skill { margin-bottom: 14px; font-size: 14px; }
+  .contact a { display: inline-block; margin-right: 18px; }
+  footer { margin-top: 80px; color: var(--dim); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; }
+  @media (prefers-reduced-motion: reduce) { .cursor { animation: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="scan" aria-hidden="true"></div>
+
+<main>
+  <nav aria-label="Main">
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#projects">projects</a>
+    <a href="#contact">contact</a>
+  </nav>
+
+  <div class="term" role="region" aria-label="Introduction">
+    <div class="term-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span>student@lab:~</span></div>
+    <div class="term-body">
+      <div><span class="prompt">student@lab:~$</span> whoami</div>
+      <h1 id="typed" aria-label="Gowtham B, cyber security student"></h1><span class="cursor" aria-hidden="true"></span>
+      <div class="out" id="sub" style="opacity:0">Cyber security student. Learning to break things so I can help fix them.</div>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>cat about.txt</h2>
+    <p>I'm a cyber security student focused on ethical hacking, network defense and web application security. I practice on legal labs and CTF platforms, and I document what I learn. Replace this paragraph with your own story: your university, your goals and what you are working towards.</p>
+  </section>
+
+  <section id="skills">
+    <h2>ls skills/</h2>
+    <div class="skill">Network security <div class="bar"><i style="width:75%"></i></div></div>
+    <div class="skill">Web app security (OWASP Top 10) <div class="bar"><i style="width:65%"></i></div></div>
+    <div class="skill">Linux and Bash <div class="bar"><i style="width:80%"></i></div></div>
+    <div class="skill">Python scripting <div class="bar"><i style="width:70%"></i></div></div>
+    <h3 style="color:var(--amber);font-size:15px;margin:26px 0 12px">Tools</h3>
+    <div class="tags"><span class="tag">Kali Linux</span><span class="tag">Wireshark</span><span class="tag">Nmap</span><span class="tag">Burp Suite</span><span class="tag">Metasploit</span><span class="tag">Git</span></div>
+  </section>
+
+  <section id="projects">
+    <h2>ls projects/</h2>
+    <div class="grid">
+      <div class="card"><h3>Home lab</h3><p>Virtual network with Kali, a vulnerable target machine and a SIEM for practicing attack and detection.</p></div>
+      <div class="card"><h3>CTF writeups</h3><p>Step by step solutions from TryHackMe and Hack The Box rooms, explaining the thinking behind each step.</p></div>
+      <div class="card"><h3>Port scanner in Python</h3><p>A small tool that checks open ports on hosts I own, built to learn sockets and threading.</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>./contact.sh</h2>
+    <p>Open to internships, collaborations and CTF teams.</p>
+    <a href="mailto:you@example.com">email</a>
+    <a href="https://github.com/yourname">github</a>
+    <a href="https://linkedin.com/in/yourname">linkedin</a>
+  </section>
+
+  <footer>All testing on this site's projects is done on systems I own or have permission to test.</footer>
+</main>
+
+<script>
+  // Matrix rain background
+  const c = document.getElementById('rain'), x = c.getContext('2d');
+  const chars = '01アイウエオカキクケコ{}[]<>/\\$#%&*+=';
+  let cols, drops, size = 16;
+  function setup() {
+    c.width = innerWidth; c.height = innerHeight;
+    cols = Math.floor(c.width / size);
+    drops = Array.from({ length: cols }, () => Math.random() * c.height / size);
+  }
+  function draw() {
+    x.fillStyle = 'rgba(5,8,6,0.08)'; x.fillRect(0, 0, c.width, c.height);
+    x.fillStyle = '#39ff7a'; x.font = size + 'px monospace';
+    drops.forEach((y, i) => {
+      x.fillText(chars[Math.floor(Math.random() * chars.length)], i * size, y * size);
+      if (y * size > c.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    });
+  }
+  setup(); addEventListener('resize', setup);
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (still) { for (let i = 0; i < 40; i++) draw(); } else { setInterval(draw, 55); }
+
+  // Typing effect for the name
+  const name = 'Gowtham.B', el = document.getElementById('typed'), sub = document.getElementById('sub');
+  let i = 0;
+  function type() {
+    el.textContent = name.slice(0, ++i);
+    if (i < name.length && !still) setTimeout(type, 110); else sub.style.opacity = 1;
+  }
+  still ? (el.textContent = name, sub.style.opacity = 1) : type();
+</script>
+</body>
+</html>
